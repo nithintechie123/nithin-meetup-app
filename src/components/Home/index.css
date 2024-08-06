@@ -1,0 +1,36 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-family: 'Roboto';
+  color: #334155;
+  font-weight: 500;
+  font-size: 48px;
+}
+
+.sub-heading {
+  font-family: 'Roboto';
+  color: #475569;
+  font-size: 20px;
+}
+
+.register-button {
+  font-family: 'Roboto';
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 6px;
+  border-width: 0px;
+  padding: 8px;
+  width: 100px;
+  outline: none;
+  cursor: pointer;
+}
+
+.meetup-image {
+  max-width: 800px;
+}
