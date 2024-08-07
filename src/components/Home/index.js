@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import {Component} from 'react'
 import './index.css'
 
@@ -7,9 +9,11 @@ class Home extends Component {
       <div className="home-container">
         <h1 className="heading">Welcome to Meetup</h1>
         <p className="sub-heading">Please register for the topic</p>
-        <button type="button" className="register-button">
-          Register
-        </button>
+        <Link to="/register">
+          <button type="button" className="register-button">
+            Register
+          </button>
+        </Link>
         <img
           src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
           alt="meetup"
