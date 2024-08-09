@@ -1,25 +1,34 @@
 import {Link} from 'react-router-dom'
 
 import {Component} from 'react'
-import './index.css'
+
+import {
+  HomeContainer,
+  MeetupHeading,
+  SubHeading,
+  RegisterButton,
+  MeetupImageElement,
+} from '../../styledComponents'
 
 class Home extends Component {
   render() {
     return (
-      <div className="home-container">
-        <h1 className="heading">Welcome to Meetup</h1>
-        <p className="sub-heading">Please register for the topic</p>
+      <HomeContainer className="home-container">
+        <MeetupHeading className="heading">Welcome to Meetup</MeetupHeading>
+        <SubHeading className="sub-heading">
+          Please register for the topic
+        </SubHeading>
         <Link to="/register">
-          <button type="button" className="register-button">
+          <RegisterButton type="button" className="register-button">
             Register
-          </button>
+          </RegisterButton>
         </Link>
-        <img
+        <MeetupImageElement
           src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
           alt="meetup"
           className="meetup-image"
         />
-      </div>
+      </HomeContainer>
     )
   }
 }

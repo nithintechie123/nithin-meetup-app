@@ -1,6 +1,18 @@
 import {Component} from 'react'
 
-import './index.css'
+import {
+  RegistrationContainer,
+  WebsiteRegisterImage,
+  FormContainer,
+  FormHeading,
+  InputContainer,
+  LabelElement,
+  InputElement,
+  SelectElement,
+  RegisterButton,
+  ErrorMessage,
+  OptionElement,
+} from '../../styledComponents'
 
 const topicsList = [
   {
@@ -26,79 +38,76 @@ const topicsList = [
 ]
 
 class Register extends Component {
-  state = {userName: '', activeDisplayText: topicsList[0].displayText}
+  state = {
+    userName: '',
+    activeDisplayId: topicsList[0].id,
+    showErrorMsg: false,
+    registeredStatus: false,
+  }
 
   onChangeUsername = event => {
     this.setState({userName: event.target.value})
   }
 
   onChangeSelectOption = event => {
-    this.setState({activeDisplayText: event.target.value})
+    this.setState({activeDisplayId: event.target.value})
   }
 
   onSubmitRegisterForm = async event => {
     event.preventDefault()
-    const {userName, activeDisplayText} = this.state
+    const {userName} = this.state
 
-    const userDetails = {user_name: userName, displaY_text: activeDisplayText}
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(userDetails),
+    if (userName === '') {
+      this.setState({showErrorMsg: true})
+    } else {
+      const {history} = this.props
+      history.replace('/')
+      this.setState(prevState => ({
+        registeredStatus: !prevState.registeredStatus,
+      }))
     }
-
-    const response = await fetch(options)
-    const data = await response.json()
-    console.log(data)
   }
 
   render() {
-    const {userName, activeDisplayText} = this.state
-    console.log(userName, activeDisplayText)
+    const {userName, activeDisplayId, showErrorMsg} = this.state
 
     return (
-      <div className="reg-container">
-        <img
+      <RegistrationContainer>
+        <WebsiteRegisterImage
           src="https://assets.ccbp.in/frontend/react-js/meetup/website-register-img.png"
           alt="website register"
-          className="website-register-image"
         />
-        <form className="form-container" onSubmit={this.onSubmitRegisterForm}>
-          <h1 className="form-heading">Let us join</h1>
-          <div className="input-container">
-            <label htmlFor="name" className="label-element">
-              Label
-            </label>
-            <input
+        <FormContainer onSubmit={this.onSubmitRegisterForm}>
+          <FormHeading>Let us join</FormHeading>
+          <InputContainer>
+            <LabelElement htmlFor="name">Label</LabelElement>
+            <InputElement
               type="text"
-              className="input-element"
               placeholder="Your name"
               onChange={this.onChangeUsername}
               value={userName}
             />
-          </div>
-          <div className="input-container">
-            <label className="label-element" htmlFor="topics">
-              Topics
-            </label>
-            <select
+          </InputContainer>
+          <InputContainer>
+            <LabelElement htmlFor="topics">Topics</LabelElement>
+            <SelectElement
               id="topics"
-              className="input-element"
               onChange={this.onChangeSelectOption}
-              value={activeDisplayText}
+              value={activeDisplayId}
             >
               {topicsList.map(eachTopic => (
-                <option key={eachTopic.id} className="option-element">
+                <OptionElement key={eachTopic.id}>
                   {eachTopic.displayText}
-                </option>
+                </OptionElement>
               ))}
-            </select>
-          </div>
-          <button type="submit" className="register-button">
-            Register Now
-          </button>
-        </form>
-      </div>
+            </SelectElement>
+          </InputContainer>
+          <RegisterButton type="submit">Register Now</RegisterButton>
+          {showErrorMsg ? (
+            <ErrorMessage>Please enter your name</ErrorMessage>
+          ) : null}
+        </FormContainer>
+      </RegistrationContainer>
     )
   }
 }

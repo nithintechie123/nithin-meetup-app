@@ -1,12 +1,12 @@
-import './index.css'
+import {NavContainer, WebsiteLogo} from '../../styledComponents'
 
 const Header = () => (
-  <nav className="nav-container">
-    <img
+  <NavContainer>
+    <WebsiteLogo
       src="https://assets.ccbp.in/frontend/react-js/meetup/website-logo-img.png"
       alt="website logo"
     />
-  </nav>
+  </NavContainer>
 )
 
 export default Header
