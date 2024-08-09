@@ -1,10 +1,14 @@
-import {React} from 'react'
+import React from 'react'
 
 const RegisterContext = React.createContext({
   userName: '',
-  activeDisplayId: 'ARTS_AND_CULTURE',
+  activeDisplayId: 'Arts and Culture',
   registeredStatus: false,
   showErrorMsg: false,
+  changeUserName: () => {},
+  changeTopicName: () => {},
+  updateErrorStatus: () => {},
+  updateRegisteredStatus: () => {},
 })
 
 export default RegisterContext

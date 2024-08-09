@@ -140,3 +140,24 @@ export const ErrorMessage = styled.p`
   margin: 0px;
   font-size: 12px;
 `
+export const RegisteredContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const NameElement = styled.h1`
+  font-family: 'Roboto';
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 48px;
+  margin: 0px;
+`
+
+export const TopicElement = styled.p`
+  font-family: 'Roboto';
+  color: #334155;
+  font-size: 34px;
+  font-weight: 600;
+`
